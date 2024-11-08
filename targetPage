@@ -1,0 +1,31 @@
+// ==UserScript==
+// @name         targetController
+// @namespace    http://tampermonkey.net/
+// @version      2024-11-08
+// @description  try to take over the world!
+// @author       You
+// @match        https://www.zhonghuadiancang.com/waiguomingzhu/9253/*
+// @grant        none
+// ==/UserScript==
+
+(function() {
+    //此脚本为被控制页面的注入脚本
+    //@match匹配指定url并注入脚本，这里为被控制页面的url
+    'use strict';
+
+    // Your code here...
+    window.addEventListener('message', (event) => {
+            if (event.data.scrollTop !== undefined) {
+                window.scrollTo(0, event.data.scrollTop);
+                // 同时将滚动位置反馈给父窗口
+                window.opener.postMessage({scrollTop: event.data.scrollTop}, '*');
+            }
+        });
+
+        window.addEventListener('scroll', () => {
+            if (window.opener) {
+                const scrollTop = window.scrollY;
+                window.opener.postMessage({scrollTop: scrollTop}, '*');
+            }
+        });
+})();

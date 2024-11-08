@@ -1,0 +1,39 @@
+// ==UserScript==
+// @name         conttollerPage
+// @namespace    http://tampermonkey.net/
+// @version      2024-11-08
+// @description  try to take over the world!
+// @author       You
+// @match        https://www.kancloud.cn/manual/thinkphp6_0/*
+// @grant        none
+// ==/UserScript==
+
+
+(function() {
+    //此脚本为控制页面的注入脚本，控制页面通过滑轮滚动来同步控制被控制页面的滑轮滚动
+    //@match匹配指定url并注入脚本，这里为控制页面的url
+    'use strict';
+
+    // Your code here...
+     let otherWindow;
+     //url填入要偷看的网页地址
+     let url = 'https://www.zhonghuadiancang.com/waiguomingzhu/9253/187580.html';
+
+        window.onload = function() {
+            otherWindow = window.open(url, '_blank');
+        }
+
+        window.addEventListener('scroll', () => {
+            if (otherWindow) {
+                const scrollTop = window.scrollY;
+                otherWindow.postMessage({scrollTop: scrollTop}, '*');
+            }
+        });
+
+        window.addEventListener('message', (event) => {
+            if (event.data.scrollTop !== undefined) {
+                window.scrollTo(0, event.data.scrollTop);
+            }
+        });
+})();
+})();
