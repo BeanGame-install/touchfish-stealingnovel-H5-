@@ -12,10 +12,12 @@ Google：Customize and Controll Google Chrome - Extensions - Manage Extensions -
 2.Add this extension to your browser
 ```
 
-## Create Script （新建脚本）、
+## Create and Inject Script （新建并注入脚本脚本）
 ```
 1.Go to this extension and create new script controllerPage and targetPage
 
-2.Copy and paste the contents of  and  of this project to Script A and Script B respectively.
+2.Copy and paste the contents of files contollerPage and targetPage of this project to Script contollerPage and Script targetPage respectively
+
+3.Script contollerPage is injected into the page (bunker) you want to control and Script targetPage is injected into the controlled page (web novel)
 ```
 
