@@ -20,7 +20,7 @@
      let url = 'https://www.zhonghuadiancang.com/waiguomingzhu/9253/187580.html';
 
         window.onload = function() {
-            otherWindow = window.open(url, '_blank');
+            otherWindow = window.open(url, '_blank'，'width=400 height=150 left=2000 top =900');
         }
 
         window.addEventListener('scroll', () => {
